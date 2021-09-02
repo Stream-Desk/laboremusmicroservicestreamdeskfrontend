@@ -1,30 +1,63 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <v-app>
+    <v-app-bar app color="black" class="bar">
+      <v-toolbar-title class="title">
+        Stream|<span>Desk</span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon class="btn"><i class="fas fa-user"></i></v-btn>
+      <v-btn icon class="btn"><i class="fas fa-comments"></i></v-btn>
+      <v-btn icon class="btn"><i class="fas fa-bell"></i></v-btn>
+    </v-app-bar>
+    <v-main>
+      <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<script>
+export default {
+  name: "App",
+
+  data: () => ({
+    //
+  }),
+};
+</script>
+
+<style scoped>
+body {
+  background: #fff;
+}
+.bar .title {
+  color: rgb(250, 246, 20);
+  font-size: 25px;
+  text-transform: upeercase;
+  font-weight: 900;
+  font-family: "Roboto" sans-serifs;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+.bar .title span {
+  color: #fff;
+}
+.btn {
+  background: #fff;
+  color: #000;
+  display: inline-block;
+  margin: 0 10px;
+  font-size: 18px;
+  width: 34px;
+  height: 34px;
+  line-height: 35px;
   text-align: center;
-  color: #2c3e50;
+  border-radius: 50%;
+  transition: 0.3s;
+  transition-property: background, color;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+.btn:hover {
+  background: rgb(250, 246, 20);
+  color: #fff;
 }
 </style>
