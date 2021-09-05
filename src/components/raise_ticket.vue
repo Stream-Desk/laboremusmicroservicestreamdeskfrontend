@@ -7,22 +7,22 @@
             <label>Requester</label> &nbsp;
             <input placeholder="name here" />
           </div>
-
+&nbsp;
           <div>
             <label>Type</label> &nbsp;
             <input placeholder="type here" />
           </div>
-
+&nbsp;
           <div>
             <label>Category</label> &nbsp;
             <input placeholder="category here" />
           </div>
-
+&nbsp;
           <div>
             <label>Summary</label> &nbsp;
             <input placeholder="summary here" />
           </div>
-
+&nbsp;
           <div>
             <label>Requester</label> &nbsp;
             <textarea placeholder="description here" />
@@ -83,5 +83,12 @@ export default {
   display: flex;
   justify-content: space-between;
   padding-top: 2rem;
+}
+input{
+border: 1px solid #000;
+/* width: 200px; */
+padding : 5px;
+font-size: 15px;
+border-radius: 2px;
 }
 </style>
