@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import RaiseTicket from '../components/raise_ticket.vue'
 
 const routes = [
   {
@@ -7,6 +8,8 @@ const routes = [
     name: "Home",
     component: Home,
   },
+  {path:"/raise-ticket" , name:"RaiseTicket", component:RaiseTicket},
+
   {
     path: "/about",
     name: "About",
