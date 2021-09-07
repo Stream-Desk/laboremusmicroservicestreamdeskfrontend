@@ -8,8 +8,13 @@
       <v-btn icon class="btn"><i class="fas fa-user"></i></v-btn>
       <v-btn icon class="btn"><i class="fas fa-comments"></i></v-btn>
       <v-btn icon class="btn"><i class="fas fa-bell"></i></v-btn>
+      <v-btn flat class="button" small color="white" href="/login">Login</v-btn>
     </v-app-bar>
+    <br />
     <v-main>
+      <!-- <v-card>
+        <img src="/assets/img/present1.png" class="image" />
+      </v-card> -->
       <router-view />
     </v-main>
   </v-app>
@@ -59,5 +64,16 @@ body {
 .btn:hover {
   background: rgb(250, 246, 20);
   color: #fff;
+}
+.button {
+  background: #fff;
+  color: #000;
+  border-radius: 20px;
+  transition: 0.3s;
+  transition-property: background, color;
+}
+.button:hover {
+  background: rgb(250, 246, 20);
+  color: rgb(15, 78, 196);
 }
 </style>

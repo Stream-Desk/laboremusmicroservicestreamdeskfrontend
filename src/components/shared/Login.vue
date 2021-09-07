@@ -1,7 +1,7 @@
 <template>
   <v-container grid-list-xs>
-    <v-content>
-      <form>
+    <v-content class="login-register">
+      <form class="mx-2" @submit="submitForm" autocomplete="off">
         <v-card width="300" class="mx-auto mt-9" id="card">
           <v-card-title primary-title class="login-html"
             >Stream|
@@ -18,7 +18,6 @@
               v-model="email"
               required
             />
-
             <label for="pass" class="label">Password</label>
             <input
               id="pass"
@@ -30,7 +29,12 @@
             />
           </v-card-text>
           <v-card-actions>
-            <v-btn class="btn" @click="submit" type="submit" rounded="pill"
+            <v-btn
+              class="btn"
+              @click="submitForm"
+              type="submit"
+              href="/tickets"
+              rounded="pill"
               >Sign In</v-btn
             >
           </v-card-actions>
@@ -43,14 +47,32 @@
 </template>
 
 <script>
+import { email, required } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
+
 export default {
-  name: "login",
+  name: "Login",
+
   data() {
     return {
-      email: "",
-      password: "",
+      form: {
+        valid: true,
+        email: "",
+        password: "",
+      },
     };
   },
+
+  setup: () => ({ v$: useVuelidate() }),
+
+  validations() {
+    return {
+      form: {
+        email: { required, email },
+      },
+    };
+  },
+
   methods: {},
 };
 </script>
@@ -111,6 +133,8 @@ body {
   display: inline-block;
   color: rgb(0, 0, 0);
   margin-inline-start: 20px;
+  margin-top: -20%;
+  padding-top: 10px;
 }
 input {
   position: relative;

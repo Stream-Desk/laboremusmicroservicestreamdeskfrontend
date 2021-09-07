@@ -57,9 +57,9 @@
 </template>
 
 <script>
-import AllTicketsDataService from "../service/AllTicketDataServices";
-import { ticketLabels } from "../utils/constants";
-import { xpath_getter } from "../utils/jsonHelpers";
+import AllTicketsDataService from "../../service/AllTicketDataServices";
+import { ticketLabels } from "../../utils/constants";
+import { xpath_getter } from "../../utils/jsonHelpers";
 export default {
   data() {
     return {
