@@ -2,7 +2,7 @@ import http from "/http-ticket";
 
 class AllTicketsDataService {
   getAll() {
-    return http.get("/api/Tickets");
+    return http.get("/api/Tickets/Labo/All");
   }
 
   get(id) {
@@ -18,7 +18,7 @@ class AllTicketsDataService {
   }
 
   delete(id) {
-    return http.delete(`/api/Tickets/${id}`);
+    return http.delete(`/api/Tickets/Labo/${id}`);
   }
 
   // deleteAll() {

@@ -46,6 +46,9 @@
                     {{ getTicketFieldValues(ticket, field) }}
                     <view-ticket :tickets="ticket"></view-ticket>
                   </td>
+                  <td>
+                    <v-chip flat small>{{ ticket.status }}</v-chip>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -71,20 +74,22 @@ export default {
       tickets: [],
       ticketTable: {
         tableHeadings: [
-          ticketLabels.TicketId,
-          ticketLabels.Priority,
-          ticketLabels.Category,
-          ticketLabels.Date,
-          ticketLabels.Requester,
-          ticketLabels.Status,
+          ticketLabels.id,
+          ticketLabels.priority,
+          ticketLabels.category,
+          ticketLabels.summary,
+          ticketLabels.date,
+          ticketLabels.requester,
+          ticketLabels.status,
         ],
         fields: [
-          "$.ticketid",
+          "$.id",
           "$.priority",
           "$.category",
+          "$.summary",
           "$.submitDate",
           "$.requester",
-          "$.status",
+          // "$.status",
         ],
       },
     };

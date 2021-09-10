@@ -1,8 +1,9 @@
 export const ticketLabels = {
-  id: "Ticket Id",
-  summary: "Priority",
+  id: "TicketId",
+  priority: "Priority",
   category: "Category",
-  descripton: "Date",
-  date: "Requester",
-  status: "Status"
+  summary: "Summary",
+  date: "Date",
+  requester: "Requester",
+  status: "Status",
 };
