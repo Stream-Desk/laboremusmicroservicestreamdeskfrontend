@@ -21,13 +21,9 @@ class AllTicketsDataService {
     return http.delete(`/api/Tickets/Labo/${id}`);
   }
 
-  // deleteAll() {
-  //     return http.delete(`/tickets`);
-  // }
-
-  // findByDate(date) {
-  //     return http.get(`/tickets?date=${date}`);
-  // }
+  email(data) {
+    return http.post(`/api/Mail`, data);
+  }
 }
 
 export default new AllTicketsDataService();
