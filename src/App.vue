@@ -10,15 +10,19 @@
       <v-btn icon class="btn"><i class="fas fa-bell"></i></v-btn>
     </v-app-bar>
     <v-main>
+      <raise-ticket></raise-ticket>
       <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import RaiseTicket from "./components/raise_ticket.vue"
 export default {
   name: "App",
-
+components:{
+  RaiseTicket,
+},
   data: () => ({
     //
   }),
