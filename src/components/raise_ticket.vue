@@ -5,32 +5,32 @@
         <div class="newTicketForm__left">
           <div>
             <label>Requester</label> &nbsp;
-            <input placeholder="name here" />
+            <input disabled placeholder="name here" />
           </div>
-&nbsp;
+          &nbsp;
           <div>
             <label>Type</label> &nbsp;
-            <input placeholder="type here" />
+            <input disabled placeholder="type here" />
           </div>
-&nbsp;
+          &nbsp;
           <div>
             <label>Category</label> &nbsp;
-            <input placeholder="category here" />
+            <input disabled placeholder="category here" />
           </div>
-&nbsp;
+          &nbsp;
           <div>
             <label>Summary</label> &nbsp;
-            <input placeholder="summary here" />
+            <input disabled placeholder="summary here" />
           </div>
-&nbsp;
+          &nbsp;
           <div>
-            <label>Requester</label> &nbsp;
-            <textarea placeholder="description here" />
+            <label>Description</label> &nbsp;
+            <textarea disabled placeholder="description here" />
           </div>
         </div>
         <div class="newTicketForm__right">
-          <TicketInfo/> &nbsp;
-          <Comments/>
+          <TicketInfo /> &nbsp;
+          <Comments />
         </div>
       </div>
       <div class="newTicketForm__bottom">
@@ -42,7 +42,6 @@
           </select>
         </div>
         <div>
-            
           <v-btn class="closeTicketBtn secondary">close ticket </v-btn>
         </div>
       </div>
@@ -51,11 +50,11 @@
 </template>
 
 <script>
-import TicketInfo from './TicketInfo.vue'
-import Comments from './Comments.vue'
+import TicketInfo from "./TicketInfo.vue";
+import Comments from "./Comments.vue";
 export default {
   name: "RaiseTicket",
-  components:{TicketInfo, Comments},
+  components: { TicketInfo, Comments },
   data() {
     return {
       title: "",
@@ -84,11 +83,11 @@ export default {
   justify-content: space-between;
   padding-top: 2rem;
 }
-input{
-border: 1px solid #000;
-/* width: 200px; */
-padding : 5px;
-font-size: 15px;
-border-radius: 2px;
+input {
+  border: 1px solid #000;
+  /* width: 200px; */
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 2px;
 }
 </style>

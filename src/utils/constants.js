@@ -4,5 +4,5 @@ export const ticketLabels = {
   category: "Category",
   descripton: "Date",
   date: "Requester",
-  status: "Status"
+  status: "Status",
 };

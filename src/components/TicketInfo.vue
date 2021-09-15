@@ -46,7 +46,7 @@ export default {
   display: flex;
   /* justify-content: space-between; */
 }
-.infoCard{
-    width: 300px;
+.infoCard {
+  width: 300px;
 }
 </style>

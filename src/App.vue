@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import RaiseTicket from "./components/raise_ticket.vue"
+import RaiseTicket from "./components/raise_ticket.vue";
 export default {
   name: "App",
-components:{
-  RaiseTicket,
-},
+  components: {
+    RaiseTicket,
+  },
   data: () => ({
     //
   }),
