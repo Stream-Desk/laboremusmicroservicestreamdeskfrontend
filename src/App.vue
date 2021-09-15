@@ -13,6 +13,7 @@
     <br />
     <v-main>
       <Email />
+      <raise-ticket></raise-ticket>
       <router-view />
     </v-main>
   </v-app>
@@ -20,10 +21,12 @@
 
 <script>
 import Email from "./components/Email.vue";
+import RaiseTicket from "./components/raise_ticket.vue";
 export default {
   name: "App",
   components: {
-    Email,
+    RaiseTicket,
+     Email,
   },
   data: () => ({
     //

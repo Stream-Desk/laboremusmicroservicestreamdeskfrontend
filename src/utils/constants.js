@@ -3,7 +3,8 @@ export const ticketLabels = {
   priority: "Priority",
   category: "Category",
   summary: "Summary",
-  date: "Date",
   requester: "Requester",
+  descripton: "Date",
+  date: "Requester",
   status: "Status",
 };
