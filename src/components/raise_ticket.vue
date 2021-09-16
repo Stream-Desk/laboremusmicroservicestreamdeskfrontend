@@ -52,14 +52,34 @@
 <script>
 import TicketInfo from "./TicketInfo.vue";
 import Comments from "./Comments.vue";
+import AllTicketsDataService from "../service/AllTicketDataServices";
+
 export default {
-  name: "RaiseTicket",
-  components: { TicketInfo, Comments },
+  name: "ViewTicket",
+
+  components: {
+    Comments,
+    TicketInfo,
+  },
   data() {
     return {
-      title: "",
-      content: "",
+      currentTicket: null,
+      message: "",
     };
+  },
+  getTicket(id) {
+    AllTicketsDataService.get(id)
+      .then((response) => {
+        this.currentTicket = response.data;
+        console.log(response.data);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  },
+  mounted() {
+    this.message = "";
+    this.getTicket(this.$route.params.id);
   },
 };
 </script>
