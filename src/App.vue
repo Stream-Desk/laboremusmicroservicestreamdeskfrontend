@@ -26,7 +26,7 @@ export default {
   name: "App",
   components: {
     RaiseTicket,
-     Email,
+    Email,
   },
   data: () => ({
     //
