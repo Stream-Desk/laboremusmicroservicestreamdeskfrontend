@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../components/shared/Login.vue";
-import Tickets from "../components/shared/Tickets.vue";
-import RaiseTicket from "../components/raise_ticket.vue";
+import Tickets from "../components/Tickets.vue";
 
 const routes = [
   {
@@ -11,7 +10,11 @@ const routes = [
     component: Home,
   },
 
-  { path: "/raise-ticket", name: "RaiseTicket", component: RaiseTicket },
+  {
+    path: "/raise-ticket",
+    name: "RaiseTicket",
+    component: () => import("../components/raise_ticket.vue"),
+  },
 
   {
     path: "/login",

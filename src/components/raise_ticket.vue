@@ -1,81 +1,135 @@
 <template>
-  <v-card class="newTicketCard">
-    <v-form>
-      <div class="px-3 newTicketForm">
-        <div class="newTicketForm__left">
-          <div>
-            <label>Requester</label> &nbsp;
-            <input disabled placeholder="name here" />
-          </div>
-          &nbsp;
-          <div>
-            <label>Type</label> &nbsp;
-            <input disabled placeholder="type here" />
-          </div>
-          &nbsp;
-          <div>
-            <label>Category</label> &nbsp;
-            <input disabled placeholder="category here" />
-          </div>
-          &nbsp;
-          <div>
-            <label>Summary</label> &nbsp;
-            <input disabled placeholder="summary here" />
-          </div>
-          &nbsp;
-          <div>
-            <label>Description</label> &nbsp;
-            <textarea disabled placeholder="description here" />
-          </div>
-        </div>
-        <div class="newTicketForm__right">
-          <TicketInfo /> &nbsp;
-          <Comments />
-        </div>
+  <v-card :elevation="hover ? 24 : 3" class="mx-auto my-12" max-width="600">
+    <v-container grid-list-xs>
+      <v-layout row wrap>
+        <v-card-text>
+          <form v-if="currentTicket">
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">TicketId:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.id"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Date:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.submitDate"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Category:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.category"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Summary:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.summary"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Description:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.description"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Attachment:</label>
+              <div class="col-sm-10">
+                <input type="text" disabled class="form-control-plaintext" />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label">Status:</label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  v-model="currentTicket.status"
+                  disabled
+                  class="form-control-plaintext"
+                />
+              </div>
+            </div>
+          </form>
+        </v-card-text>
+      </v-layout>
+      <hr />
+      <div class="reply">
+        <form>
+          <h6>Reply Here</h6>
+          <textarea
+            name="message"
+            cols="30"
+            rows="5"
+            placeholder="Reply here"
+          ></textarea>
+          <v-btn class="view" color="primary">Send</v-btn>
+        </form>
       </div>
-      <div class="newTicketForm__bottom">
-        <div>
-          <label>Change Status</label> &nbsp;
-          <select>
-            <option>pending</option>
-            <option>pending</option>
-          </select>
-        </div>
-        <div>
-          <v-btn class="closeTicketBtn secondary">close ticket </v-btn>
-        </div>
-      </div>
-    </v-form>
+    </v-container>
   </v-card>
 </template>
 
 <script>
-import TicketInfo from "./TicketInfo.vue";
-import Comments from "./Comments.vue";
 import AllTicketsDataService from "../service/AllTicketDataServices";
 
 export default {
   name: "ViewTicket",
 
-  components: {
-    Comments,
-    TicketInfo,
-  },
+  components: {},
   data() {
     return {
       currentTicket: null,
       message: "",
     };
   },
-  getTicket(id) {
-    AllTicketsDataService.get(id)
-      .then((response) => {
-        this.currentTicket = response.data;
-        console.log(response.data);
-      })
-      .catch((e) => {
-        console.log(e);
-      });
+  updated: false,
+  methods: {
+    onSend: function (message) {
+      alert(message);
+    },
+    onClickEditTicket() {
+      this.dialog = true;
+    },
+
+    getTicket(id) {
+      AllTicketsDataService.get(id)
+        .then((response) => {
+          this.currentTicket = response.data;
+          console.log(response.data);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
   },
   mounted() {
     this.message = "";
@@ -84,40 +138,29 @@ export default {
 };
 </script>
 
-<style scoped>
-.newTicketCard {
-  width: 60%;
-  margin: 5rem auto;
+<style>
+form input {
+  margin-left: 30px;
+}
+form label {
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
 
-  padding: 2rem;
-}
-.newTicketForm {
-  display: flex;
-  justify-content: space-between;
-}
-.closeTicketBtn {
-  border-radius: 40px;
-}
-.newTicketForm__bottom {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 2rem;
-}
-input {
-  border: 1px solid #000;
-  /* width: 200px; */
-  padding: 5px;
-  font-size: 15px;
-  border-radius: 2px;
-}
 textarea {
-  width: 70%;
+  width: 90%;
   padding: 12px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
   box-sizing: border-box;
   margin-top: 6px;
-  margin-bottom: 16px;
+
   resize: vertical;
+}
+.view {
+  float: right;
+  right: 3.5rem;
+  margin-bottom: 16px;
 }
 </style>

@@ -21,11 +21,10 @@
 
 <script>
 import Email from "./components/Email.vue";
-import RaiseTicket from "./components/raise_ticket.vue";
+
 export default {
   name: "App",
   components: {
-    RaiseTicket,
     Email,
   },
   data: () => ({

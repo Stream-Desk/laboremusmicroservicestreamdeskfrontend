@@ -10,9 +10,16 @@
           v-model="filter"
           :search="search"
         />
-        <v-btn v-model="filter" class="filter"
-          >Status <i class="fas fa-sort-down"></i
-        ></v-btn>
+
+        <div class="filter">
+          <select class="select">
+            <option>Status</option>
+            <option>Open</option>
+            <option>Resolved</option>
+            <option>Closed</option>
+            <option>Pending</option>
+          </select>
+        </div>
       </v-card-actions>
       <v-divider></v-divider>
       <table
@@ -45,9 +52,13 @@
               <view-ticket :tickets="ticket"></view-ticket>
             </td>
             <td>
-              <v-chip :color="getColor(status)" flat small>{{
-                ticket.status
-              }}</v-chip>
+              <v-chip flat small>{{ ticket.status }}</v-chip>
+            </td>
+
+            <td>
+              <v-btn class="view" color="success" @click="viewTicket(ticket.id)"
+                >Details</v-btn
+              >
             </td>
           </tr>
         </tbody>
@@ -68,9 +79,9 @@
 </template>
 
 <script>
-import AllTicketsDataService from "../../service/AllTicketDataServices";
-import { ticketLabels } from "../../utils/constants";
-import { xpath_getter } from "../../utils/jsonHelpers";
+import AllTicketsDataService from "../service/AllTicketDataServices";
+import { ticketLabels } from "../utils/constants";
+import { xpath_getter } from "../utils/jsonHelpers";
 export default {
   data() {
     return {
@@ -79,6 +90,8 @@ export default {
       filter: "",
       props: ["items"],
       search: "",
+      options: ["Open", "Resolved", "Closed", "Pending"],
+
       tickets: [],
       ticketTable: {
         tableHeadings: [
@@ -116,18 +129,26 @@ export default {
           this.tickets.map((ticket) => {
             ticket.description = this.getDisplayTicket(ticket.description);
           });
+
           console.log(response.data);
         })
         .catch((e) => {
           console.log(e);
         });
     },
+
     refreshList() {
       this.retrieveTickets();
     },
+
+    viewTicket(id) {
+      this.$router.push({ name: "RaiseTicket", params: { id: id } });
+    },
+
     editTickets(id) {
       this.$router.push({ name: "Ticket-details", params: { id: id } });
     },
+
     deleteTickets(id) {
       AllTicketsDataService.delete(id)
         .then(() => {
@@ -137,6 +158,7 @@ export default {
           console.log(e);
         });
     },
+
     getDisplayTicket(description) {
       description =
         description.length > 20
@@ -148,6 +170,7 @@ export default {
       summary = summary.length > 20 ? summary.substr(0, 20) + "..." : summary;
       return summary;
     },
+
     mounted() {
       this.retrieveTickets();
     },
@@ -158,10 +181,15 @@ export default {
 <style scoped>
 .filter {
   border: 1px solid #e0e0e0;
-  border-radius: 16px;
+  border-radius: 10px;
   text-transform: capitalize;
   box-sizing: border-box;
+  padding: 2px 5px 2px 5px;
 }
+.select {
+  padding: 2px 5px 2px 5px;
+}
+
 .pagination {
   margin-left: 80%;
   width: 207px;
