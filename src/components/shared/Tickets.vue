@@ -10,9 +10,16 @@
           v-model="filter"
           :search="search"
         />
-        <v-btn v-model="filter" class="filter"
-          >Status <i class="fas fa-sort-down"></i
-        ></v-btn>
+
+        <div class="filter">
+          <select class="select">
+            <option>Status</option>
+            <option>Open</option>
+            <option>Resolved</option>
+            <option>Closed</option>
+            <option>Pending</option>
+          </select>
+        </div>
       </v-card-actions>
       <v-divider></v-divider>
       <table
@@ -45,9 +52,7 @@
               <view-ticket :tickets="ticket"></view-ticket>
             </td>
             <td>
-              <v-chip :color="getColor(status)" flat small>{{
-                ticket.status
-              }}</v-chip>
+              <v-chip flat small>{{ ticket.status }}</v-chip>
             </td>
           </tr>
         </tbody>
@@ -79,6 +84,7 @@ export default {
       filter: "",
       props: ["items"],
       search: "",
+      options: ["Open", "Resolved", "Closed", "Pending"],
 
       tickets: [],
       ticketTable: {
@@ -159,11 +165,11 @@ export default {
       this.retrieveTickets();
     },
 
-    getColor(status) {
-      if (status.value > "pending") return "red";
-      else if (status.value > open) return "green";
-      else return "grey";
-    },
+    // getColor(status) {
+    //   if (status.value > "pending") return "red";
+    //   else if (status.value > open) return "green";
+    //   else return "grey";
+    // },
   },
 };
 </script>
@@ -171,10 +177,15 @@ export default {
 <style scoped>
 .filter {
   border: 1px solid #e0e0e0;
-  border-radius: 16px;
+  border-radius: 10px;
   text-transform: capitalize;
   box-sizing: border-box;
+  padding: 2px 5px 2px 5px;
 }
+.select {
+  padding: 2px 5px 2px 5px;
+}
+
 .pagination {
   margin-left: 80%;
   width: 207px;
