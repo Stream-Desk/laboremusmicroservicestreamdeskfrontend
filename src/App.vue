@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="black" class="bar">
+    <v-app-bar app color="grey" class="bar">
       <v-toolbar-title class="title">
         Stream|<span>Desk</span>
       </v-toolbar-title>
