@@ -1,38 +1,55 @@
 <template>
-  <v-card class="infoCard">
-    <v-card-title>
-      <h3>Ticket Info</h3>
-    </v-card-title>
+  <div class="infoCard">
+    <div >
+     <span style="font-weight: bold"> Details</span>&nbsp;&nbsp;<span style="font-weight: bold">No</span
+      >&nbsp;&nbsp;<span class="danger" style="color: red">#566</span>
+    </div>
+
     <div class="infoCardContainer">
-      <v-card-text class="infoCard_left">
-        <div>
-          <p style="font-weight: bold">Name:</p>
-          <p class="danger" style="color: red">A560</p>
+      <div class="infoCard_left">
+        <div class="spacebtndivs">
+          <span style="font-weight: bold ">Requester</span>&nbsp;&nbsp;Bank
         </div>
-        <div>
-          <p style="font-weight: bold">Modify time</p>
-          <p>06:13 pm</p>
-          <p>12/05/2020</p>
+        <div class="spacebtndivs"><span style="font-weight: bold">Type</span>&nbsp;&nbsp;Bugs</div>
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Category</span>&nbsp;&nbsp;Bugs
         </div>
 
-        <div>
-          <p style="font-weight: bold">Requested time</p>
-          <p>06:13 pm</p>
-          <p>12/05/2020</p>
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Summary</span>&nbsp;&nbsp;Upload
+          images.
         </div>
-      </v-card-text>
-      <v-card-text class="infoCard_right">
-        <div>
-          <p style="font-weight: bold">Current Status</p>
-          <ul>
-            <li>Open</li>
-            <li>Priority</li>
-            <li>Normal</li>
-          </ul>
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Description</span>&nbsp;&nbsp;I cannot
+          upload images for example National ID.
         </div>
-      </v-card-text>
+
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Attachments</span>
+        </div>
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Change Status</span>&nbsp;&nbsp;<span
+            class="selectoptions"
+            ><select>
+              <optgroup>
+                <option>Pending</option>
+                <option>Pending</option>
+              </optgroup>
+            </select>
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </div>
+      </div>
+      <div class="infoCard_right">
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Current Status</span>&nbsp;&nbsp;Open
+        </div>
+        <div class="spacebtndivs">
+          <span style="font-weight: bold">Priority</span>&nbsp;&nbsp;Normal
+        </div>
+      </div>
     </div>
-  </v-card>
+  </div>
 </template>
 
 <script>
@@ -47,9 +64,18 @@ export default {
   /* justify-content: space-between; */
 }
 .infoCard {
-  width: 280px;
+  width: 100%;
 }
 li {
   list-style-type: none;
+}
+.selectoptions {
+  box-shadow: 5p 5px #fff;
+  border: 2px solid #888;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+.spacebtndivs{
+padding-top: 15px;
 }
 </style>
