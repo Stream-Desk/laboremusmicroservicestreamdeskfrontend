@@ -13,6 +13,10 @@ class AllTicketsDataService {
     return http.post("/api/Tickets", data);
   }
 
+  createComment(data) {
+    return http.post("/api/Comments", data);
+  }
+
   update(id, data) {
     return http.put(`/api/Tickets/${id}`, data);
   }

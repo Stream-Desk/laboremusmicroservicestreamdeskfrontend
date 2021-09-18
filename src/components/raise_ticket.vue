@@ -84,14 +84,15 @@
       <hr />
       <div class="reply">
         <form>
-          <h6>Reply Here</h6>
+          <h6>Comment</h6>
           <textarea
             name="message"
             cols="30"
             rows="5"
-            placeholder="Reply here"
+            v-model="comment.message"
+            placeholder="Write here"
           ></textarea>
-          <v-btn class="view" color="primary">Send</v-btn>
+          <v-btn class="view" color="primary" @click="sendComment">Send</v-btn>
         </form>
       </div>
     </v-container>
@@ -109,16 +110,37 @@ export default {
     return {
       currentTicket: null,
       message: "",
+      comment:{
+        message:""
+      }
     };
   },
   updated: false,
   methods: {
+    sendComment(){
+     const data = {
+        message:this.comment.message,
+      }
+       AllTicketsDataService.createComment(data)
+        .then((response) => {
+          this. comment.id = response.data.id;
+          console.log(response.data);
+          this.submitted = true;
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+    
+
     onSend: function (message) {
       alert(message);
     },
     onClickEditTicket() {
       this.dialog = true;
     },
+
+    
 
     getTicket(id) {
       AllTicketsDataService.get(id)
