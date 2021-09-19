@@ -54,6 +54,12 @@
             <td>
               <v-chip flat small>{{ ticket.status }}</v-chip>
             </td>
+
+            <td>
+              <v-btn class="view" color="success" @click="viewTicket(ticket.id)"
+                >Details</v-btn
+              >
+            </td>
           </tr>
         </tbody>
       </table>
@@ -73,9 +79,9 @@
 </template>
 
 <script>
-import AllTicketsDataService from "../../service/AllTicketDataServices";
-import { ticketLabels } from "../../utils/constants";
-import { xpath_getter } from "../../utils/jsonHelpers";
+import AllTicketsDataService from "../service/AllTicketDataServices";
+import { ticketLabels } from "../utils/constants";
+import { xpath_getter } from "../utils/jsonHelpers";
 export default {
   data() {
     return {
@@ -135,6 +141,10 @@ export default {
       this.retrieveTickets();
     },
 
+    viewTicket(id) {
+      this.$router.push({ name: "RaiseTicket", params: { id: id } });
+    },
+
     editTickets(id) {
       this.$router.push({ name: "Ticket-details", params: { id: id } });
     },
@@ -164,12 +174,6 @@ export default {
     mounted() {
       this.retrieveTickets();
     },
-
-    // getColor(status) {
-    //   if (status.value > "pending") return "red";
-    //   else if (status.value > open) return "green";
-    //   else return "grey";
-    // },
   },
 };
 </script>

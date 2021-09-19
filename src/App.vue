@@ -12,18 +12,21 @@
     </v-app-bar>
     <br />
     <v-main>
-      <!-- <v-card>
-        <img src="/assets/img/present1.png" class="image" />
-      </v-card> -->
+      <Email />
+      <raise-ticket></raise-ticket>
       <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
+import Email from "./components/Email.vue";
+
 export default {
   name: "App",
-
+  components: {
+    Email,
+  },
   data: () => ({
     //
   }),

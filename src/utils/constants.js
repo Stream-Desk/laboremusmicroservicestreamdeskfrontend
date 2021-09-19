@@ -5,5 +5,6 @@ export const ticketLabels = {
   summary: "Summary",
   date: "Date",
   requester: "Requester",
+ 
   status: "Status",
 };
