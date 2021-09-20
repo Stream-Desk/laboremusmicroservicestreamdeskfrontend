@@ -89,7 +89,7 @@
             name="message"
             cols="30"
             rows="5"
-            v-model="comment.message"
+            v-model="comment.text"
             placeholder="Write here"
           ></textarea>
           <v-btn class="view" color="primary" @click="sendComment">Send</v-btn>
@@ -109,21 +109,21 @@ export default {
   data() {
     return {
       currentTicket: null,
-      message: "",
-      comment:{
-        message:""
-      }
+     text: "",
+      comment: {
+        text: "",
+      },
     };
   },
   updated: false,
   methods: {
-    sendComment(){
-     const data = {
-        message:this.comment.message,
-      }
-       AllTicketsDataService.createComment(data)
+    sendComment() {
+      const data = {
+        message: this.comment.message,
+      };
+      AllTicketsDataService.createComment(data)
         .then((response) => {
-          this. comment.id = response.data.id;
+          this.comment.id = response.data.id;
           console.log(response.data);
           this.submitted = true;
         })
@@ -131,7 +131,6 @@ export default {
           console.log(e);
         });
     },
-    
 
     onSend: function (message) {
       alert(message);
@@ -139,8 +138,6 @@ export default {
     onClickEditTicket() {
       this.dialog = true;
     },
-
-    
 
     getTicket(id) {
       AllTicketsDataService.get(id)

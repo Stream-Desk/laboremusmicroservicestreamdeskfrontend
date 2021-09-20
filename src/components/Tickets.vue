@@ -43,7 +43,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(ticket, index) in tickets" :key="index">
+          <tr
+            v-for="(ticket, index) in tickets"
+            :key="index"
+            @click="viewTicket(ticket.id)"
+          >
             <td
               v-for="(field, fieldIndex) in ticketTable.fields"
               :key="fieldIndex"
@@ -55,11 +59,11 @@
               <v-chip flat small>{{ ticket.status }}</v-chip>
             </td>
 
-            <td>
-              <v-btn class="view" color="success" @click="viewTicket(ticket.id)"
+            <!-- <td>
+              <v-btn class="view" color="success" 
                 >Details</v-btn
               >
-            </td>
+            </td> -->
           </tr>
         </tbody>
       </table>
@@ -127,7 +131,7 @@ export default {
         .then((response) => {
           this.tickets = response.data;
           this.tickets.map((ticket) => {
-            ticket.description = this.getDisplayTicket(ticket.description);
+            ticket.summary = this.getDisplayTicket(ticket.summary);
           });
 
           console.log(response.data);
@@ -159,15 +163,8 @@ export default {
         });
     },
 
-    getDisplayTicket(description) {
-      description =
-        description.length > 20
-          ? description.substr(0, 20) + "..."
-          : description;
-      return description;
-    },
-    getDisplaySummary(summary) {
-      summary = summary.length > 20 ? summary.substr(0, 20) + "..." : summary;
+    getDisplayTicket(summary) {
+      summary = summary.length > 10 ? summary.substr(0, 10) + "..." : summary;
       return summary;
     },
 
@@ -208,5 +205,9 @@ export default {
 .header {
   margin-inline-start: 20px;
   margin-top: 20px;
+}
+tr,
+td {
+  cursor: pointer;
 }
 </style>
