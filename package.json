@@ -1,14 +1,16 @@
 {
   "name": "laboremus",
   "version": "0.1.0",
-  "private": true,
   "engines": {
     "node": "14.17.1"
   },
+  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "npm run build",
+    "start": "node server.js"
   },
   "dependencies": {
     "@material/chips": "^12.0.0",

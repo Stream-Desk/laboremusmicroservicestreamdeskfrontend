@@ -109,7 +109,7 @@ export default {
   data() {
     return {
       currentTicket: null,
-     text: "",
+      text: "",
       comment: {
         text: "",
       },
@@ -119,7 +119,7 @@ export default {
   methods: {
     sendComment() {
       const data = {
-        message: this.comment.message,
+        text: this.comment.text,
       };
       AllTicketsDataService.createComment(data)
         .then((response) => {

@@ -8,7 +8,7 @@
         <v-card
           id="card"
           :elevation="hover ? 10 : 1"
-          width="500px"
+          width="600px"
           height="550"
         >
           <i @click="close" class="fas fa-times" id="close"></i>

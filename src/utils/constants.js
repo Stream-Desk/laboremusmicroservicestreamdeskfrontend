@@ -1,5 +1,5 @@
 export const ticketLabels = {
-  id: "TicketId",
+  id: "Ticket Id",
   priority: "Priority",
   category: "Category",
   summary: "Summary",

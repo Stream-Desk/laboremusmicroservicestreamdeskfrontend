@@ -1,32 +1,31 @@
 <template>
-  <v-app>
-    <v-app-bar app color="grey" class="bar">
-      <v-toolbar-title class="title">
-        Stream|<span>Desk</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon class="btn"><i class="fas fa-user"></i></v-btn>
-      <v-btn icon class="btn"><i class="fas fa-comments"></i></v-btn>
-      <v-btn icon class="btn"><i class="fas fa-bell"></i></v-btn>
-      <v-btn flat class="button" small color="white" href="/login">Login</v-btn>
-    </v-app-bar>
-    <br />
-    <v-main>
-      <Email />
-      <raise-ticket></raise-ticket>
-      <router-view />
-    </v-main>
-  </v-app>
+  <div class="app">
+    <v-app>
+      <v-app-bar app color="grey" class="bar">
+        <v-toolbar-title class="title">
+          Stream|<span>Desk</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon class="btn"><i class="fas fa-user"></i></v-btn>
+        <v-btn icon class="btn"><i class="fas fa-comments"></i></v-btn>
+        <v-btn icon class="btn"><i class="fas fa-bell"></i></v-btn>
+        <v-btn flat class="button" small color="white" href="/login"
+          >Login</v-btn
+        >
+      </v-app-bar>
+      <br />
+      <v-main>
+        <raise-ticket></raise-ticket>
+        <router-view />
+      </v-main>
+    </v-app>
+  </div>
 </template>
 
 <script>
-import Email from "./components/Email.vue";
-
 export default {
   name: "App",
-  components: {
-    Email,
-  },
+  components: {},
   data: () => ({
     //
   }),
