@@ -313,6 +313,7 @@ th.active {
 
 th.active .arrow {
   opacity: 1;
+  font-size: 20px;
 }
 
 .arrow {
@@ -322,7 +323,7 @@ th.active .arrow {
   height: 0;
   margin-left: 5px;
   opacity: 0.66;
-  font-size: 20px;
+  /* font-size: 50px; */
 }
 
 .arrow.asc {
@@ -335,12 +336,5 @@ th.active .arrow {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #1a1919;
-}
-
-#grid-template {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: column;
-  -webkit-flex-direction: column;
 }
 </style>
